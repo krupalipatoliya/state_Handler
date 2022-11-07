@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_cart_app/utils/string.dart';
 
+import '../controllers/productcontroller.dart';
 import '../models/products.dart';
 import '../utils/colours.dart';
+import '../utils/global.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -71,7 +74,10 @@ class ProductPage extends StatelessWidget {
                       ),
                       Text(
                         foodDetails,
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 19),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 19),
                       )
                     ],
                   ),
@@ -82,10 +88,16 @@ class ProductPage extends StatelessWidget {
                       color: lightGreen.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Center(
-                      child: Icon(
-                        Icons.favorite_border,
-                        color: Colors.white,
+                    child: Center(
+                      child: IconButton(
+                        onPressed: () {
+                          Provider.of<ProductController>(context, listen: false)
+                              .likeProduct(product: products[product.id + 1]);
+                        },
+                        icon: (product.isLike == "true")
+                            ? const Icon(Icons.favorite, color: Colors.red)
+                            : const Icon(Icons.favorite_border,
+                                color: Colors.red),
                       ),
                     ),
                   ),
@@ -94,15 +106,17 @@ class ProductPage extends StatelessWidget {
             ),
             //White Container
             Positioned(
-              top: 260,
+              top: 250,
               left: 0,
               right: 0,
               child: Container(
-                height: 450,
+                height: 540,
                 width: double.infinity,
                 decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(25), topLeft: Radius.circular(25)),
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(25),
+                      topLeft: Radius.circular(25)),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -110,18 +124,22 @@ class ProductPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
-                        height: 120,
+                        height: 70,
                       ),
                       Text(
                         product.name,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 29),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 29),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       Text(
                         "\$${product.price}0",
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: green),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color: green),
                       ),
                       const SizedBox(
                         height: 15,
@@ -139,7 +157,10 @@ class ProductPage extends StatelessWidget {
                               ),
                               Text(
                                 " 4.2",
-                                style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
                               )
                             ],
                           ),
@@ -153,7 +174,10 @@ class ProductPage extends StatelessWidget {
                               ),
                               Text(
                                 " 100 Kcal",
-                                style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
                               )
                             ],
                           ),
@@ -167,7 +191,10 @@ class ProductPage extends StatelessWidget {
                               ),
                               Text(
                                 " 20min",
-                                style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
                               )
                             ],
                           ),
@@ -177,8 +204,9 @@ class ProductPage extends StatelessWidget {
                         height: 30,
                       ),
                       const Text(
-                        "About food  ",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 29),
+                        "About food ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 29),
                       ),
                       const SizedBox(
                         height: 10,
@@ -197,12 +225,6 @@ class ProductPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           onTap: () {
                             Navigator.pushNamed(context, "/");
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("Product Added To cart"),
-                                backgroundColor: Colors.green,
-                              ),
-                            );
                           },
                           child: Ink(
                             height: 60,
@@ -219,11 +241,11 @@ class ProductPage extends StatelessWidget {
                               ),
                               child: const Center(
                                 child: Text(
-                                  "Add to cart",
+                                  addToCart,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
-                                    fontSize: 16,
+                                    fontSize: 30,
                                   ),
                                 ),
                               ),
@@ -237,10 +259,14 @@ class ProductPage extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 135,
+              top: 120,
               left: 0,
               right: 0,
-              child: Image.asset(product.image),
+              child: Image.network(
+                product.image,
+                height: 150,
+                width: 150,
+              ),
             ),
           ],
         ),

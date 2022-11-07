@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
               style: TextButton.styleFrom(
                   backgroundColor: Colors.white, padding: const EdgeInsets.symmetric(horizontal: 100,vertical: 20)),
               onPressed: () {
-                Get.offAllNamed('mainPage');
+                Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
               },
               child: const Text(
                 page1Third,

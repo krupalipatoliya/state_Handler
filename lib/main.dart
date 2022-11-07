@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Astrology App",
         //home: HomePage(),
-        initialRoute: AppRoutes().homePage,
+        initialRoute: AppRoutes().introScreen,
         routes: routes,
       ),
     );
