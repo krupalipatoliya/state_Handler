@@ -1,10 +1,4 @@
-import 'dart:developer';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../controllers/productcontroller.dart';
 import '../models/products.dart';
-import 'colours.dart';
 
 List<Product> products = [
   Product(
@@ -51,7 +45,8 @@ List<Product> products = [
     id: 5,
     name: "Loyal Salad",
     price: 28.0,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18TP0xdZoP6hhi_rLqus0h5vt4kHFWNuoXQ&usqp=CAU",
+    image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18TP0xdZoP6hhi_rLqus0h5vt4kHFWNuoXQ&usqp=CAU",
     quantity: 1,
     isLike: "false",
     price2: 28.0,
@@ -70,7 +65,8 @@ List<Product> products = [
     id: 7,
     name: "All Fruits",
     price: 23.0,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyhLO6SIIt7fO1QULDmMWopQDgG_X6s5LXaQ&usqp=CAU",
+    image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyhLO6SIIt7fO1QULDmMWopQDgG_X6s5LXaQ&usqp=CAU",
     quantity: 1,
     isLike: "false",
     price2: 23.0,
@@ -89,7 +85,8 @@ List<Product> products = [
     id: 9,
     name: "Unique Fruits",
     price: 40.0,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAl6jWJ6zx69xl18tfF-jl3anbFzL011bwqQ&usqp=CAU",
+    image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAl6jWJ6zx69xl18tfF-jl3anbFzL011bwqQ&usqp=CAU",
     quantity: 1,
     isLike: "false",
     price2: 40.0,

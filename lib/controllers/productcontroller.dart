@@ -3,6 +3,7 @@ import 'package:shopping_cart_app/models/products.dart';
 
 class ProductController extends ChangeNotifier {
   List<Product> addedProduct = [];
+  List<Product> likedProduct = [];
 
   get totalPrice {
     double price = 0.0;
@@ -40,9 +41,12 @@ class ProductController extends ChangeNotifier {
   likeProduct({required Product product}) {
     if (product.isLike == "false") {
       product.isLike = "true";
+
+      likedProduct.add(product);
       notifyListeners();
     } else {
       product.isLike = "false";
+      likedProduct.remove(product);
       notifyListeners();
     }
   }

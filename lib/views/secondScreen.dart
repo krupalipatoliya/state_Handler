@@ -51,10 +51,15 @@ class _ProductHomePageState extends State<ProductHomePage> {
                     color: green,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.menu,
-                      color: Colors.white,
+                  child: Center(
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('likePage');
+                      },
+                      icon: const Icon(
+                        Icons.favorite,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

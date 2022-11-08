@@ -16,7 +16,7 @@ class ProductPage extends StatelessWidget {
     Product product = ModalRoute.of(context)!.settings.arguments as Product;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: black7,
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
